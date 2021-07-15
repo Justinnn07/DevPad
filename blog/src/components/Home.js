@@ -65,6 +65,7 @@ const ImgWithFallback = ({
     </picture>
   );
 };
+
 const Home = (props) => {
   const history = useHistory();
   const { posts } = useContext(PostListContext);
