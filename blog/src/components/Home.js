@@ -68,20 +68,19 @@ const ImgWithFallback = ({
 const Home = (props) => {
   const history = useHistory();
   const { posts } = useContext(PostListContext);
-
   const [open, setOpen] = useState(true);
   const classes = useStyles();
 
-  useLayoutEffect(()=> {
-      const alreadyVisitor = JSON.parse(localStorage.getItem('alreadyVisitor'));
-      if(alreadyVisitor && !alreadyVisitor.new){
-        setOpen(false);
-       } else {
-        const visitor = {new:false}
-        localStorage.setItem('alreadyVisitor', JSON.stringify(visitor));
-      }
-  },[])
-  
+  useLayoutEffect(() => {
+    const alreadyVisitor = JSON.parse(localStorage.getItem("alreadyVisitor"));
+    if (alreadyVisitor && !alreadyVisitor.new) {
+      setOpen(false);
+    } else {
+      const visitor = { new: false };
+      localStorage.setItem("alreadyVisitor", JSON.stringify(visitor));
+    }
+  }, []);
+
   return (
     <Container className={classes.Container}>
       <Collapse in={open} className={classes.Collapse}>

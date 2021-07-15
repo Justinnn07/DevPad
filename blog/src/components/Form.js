@@ -14,7 +14,7 @@ import Button from "@material-ui/core/Button";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { makeStyles } from "@material-ui/core/styles";
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { PostListContext } from "../Context/PostListContext";
 import Axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
 const Form = (props) => {
   const history = useHistory();
   const classes = useStyles();
-  const {setLogged,setUser} = useContext(PostListContext);
+  const { setLogged, setUser } = useContext(PostListContext);
   const formType = props.type;
   const [values, setValues] = React.useState({
     username: "",
@@ -91,12 +91,14 @@ const Form = (props) => {
       Axios.post(url, {
         username: values.username,
         password: values.password,
-      }).then((res) => {
-        alert("Successfully logged In !");
-        setLogged(true);
-        setUser(res.data.user);
-        history.push('/new');
-      }).catch(err=>alert(err));
+      })
+        .then((res) => {
+          alert("Successfully logged In !");
+          setLogged(true);
+          setUser(res.data.user);
+          history.push("/new");
+        })
+        .catch((err) => alert(err));
     }
   };
 
